@@ -1,0 +1,28 @@
+<form class="todo-form" [formGroup]="form" (ngSubmit)="addTodo($event)">
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. my-todo" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="content"></textarea>
+  </mat-form-field>
+
+  <mat-label>Leave a comment</mat-label>
+  <mat-checkbox formControlName="isDone">is done</mat-checkbox>
+
+  <div *ngIf="selectedTodo == undefined; else elseBlock">
+    <button mat-raised-button color="accent" [disabled]="form.invalid">Add Todo
+    </button>
+  </div>
+
+
+  <ng-template #elseBlock>
+    <div>
+      <button type="button" mat-raised-button color="primary" [disabled]="form.invalid" (click)="deleteTodo($event)">Delete Todo</button>
+      <button mat-raised-button color="accent" [disabled]="form.invalid">Update Todo</button>
+    </div>
+  </ng-template>
+
+</form>

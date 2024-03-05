@@ -1,0 +1,17 @@
+<p>todo-list works!</p>
+
+<mat-list>
+  <mat-selection-list [multiple]="false" (selectionChange)="changeTodo($event)">
+    @for (todo of todos$ | async; track todo) {
+      <mat-list-option [value]="todo">
+        <mat-icon matListItemIcon *ngIf="todo.isDone; else elseBlock">done</mat-icon>
+        <ng-template #elseBlock>
+          <mat-icon matListItemIcon>undone</mat-icon>
+        </ng-template>
+        <span matListItemTitle>{{ todo.title }}</span>
+        {{ todo.content }}
+      </mat-list-option>
+    }
+  </mat-selection-list>
+</mat-list>
+
