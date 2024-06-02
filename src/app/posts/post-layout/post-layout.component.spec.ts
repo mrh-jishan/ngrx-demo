@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostsLayoutComponent } from './posts-layout.component';
+import { PostLayoutComponent } from './post-layout.component';
 
-describe('PostsLayoutComponent', () => {
-  let component: PostsLayoutComponent;
-  let fixture: ComponentFixture<PostsLayoutComponent>;
+describe('PostLayoutComponent', () => {
+  let component: PostLayoutComponent;
+  let fixture: ComponentFixture<PostLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PostsLayoutComponent]
+      imports: [PostLayoutComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PostsLayoutComponent);
+    fixture = TestBed.createComponent(PostLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

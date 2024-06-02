@@ -1,7 +1,8 @@
-import {Component, OnInit, isDevMode} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
+import {StoreRootModule} from "@ngrx/store";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {CommonModule} from "@angular/common";
     CommonModule,
     RouterOutlet,
     HttpClientModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   providers: [],

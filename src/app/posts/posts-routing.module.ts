@@ -1,27 +1,27 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {PostsLayoutComponent} from "./posts-layout/posts-layout.component";
-import {PostsListComponent} from "./posts-list/posts-list.component";
-import {PostsAddComponent} from "./posts-add/posts-add.component";
-import {PostsEditComponent} from "./posts-edit/posts-edit.component";
+import {EditPostComponent} from "./edit-post/edit-post.component";
+import {AddPostComponent} from "./add-post/add-post.component";
+import {ListPostComponent} from "./list-post/list-post.component";
+import {PostLayoutComponent} from "./post-layout/post-layout.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: PostsLayoutComponent,
+    component: PostLayoutComponent,
     children: [
       {
         path: 'list',
-        component: PostsListComponent
+        component: ListPostComponent
       },
       {
         path: 'add',
-        component: PostsAddComponent
+        component: AddPostComponent
       },
       {
         path: 'edit/:id',
-        component: PostsEditComponent
+        component: EditPostComponent
       },
       {
         path: '',

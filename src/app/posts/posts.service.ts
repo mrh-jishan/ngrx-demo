@@ -12,7 +12,16 @@ export class PostsService {
   constructor(private http: HttpClient) {
   }
 
-  posts = (): Observable<any> => {
+
+
+//   export interface Post {
+//   userId: number;
+//   id: number;
+//   title: string;
+//   body: string;
+// }
+
+posts = (): Observable<any> => {
     return this.http.get(this.baseUrl)
   }
 
