@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Component, OnInit, isDevMode} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 
@@ -9,7 +9,9 @@ import {CommonModule} from "@angular/common";
   imports: [
     CommonModule,
     RouterOutlet,
-    HttpClientModule],
+    HttpClientModule,
+    RouterLink
+  ],
   templateUrl: './app.component.html',
   providers: [],
   styleUrl: './app.component.css'
