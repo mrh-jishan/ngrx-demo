@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import {PostsFormComponent} from "../posts-form/posts-form.component";
+import {PostFormComponent} from "../post-form/post-form.component";
 
 @Component({
   selector: 'app-add-post',
   standalone: true,
-    imports: [
-        PostsFormComponent
-    ],
+  imports: [
+    PostFormComponent
+  ],
   templateUrl: './add-post.component.html',
   styleUrl: './add-post.component.css'
 })

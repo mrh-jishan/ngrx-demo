@@ -4,12 +4,17 @@ import {EditPostComponent} from "./edit-post/edit-post.component";
 import {AddPostComponent} from "./add-post/add-post.component";
 import {ListPostComponent} from "./list-post/list-post.component";
 import {PostLayoutComponent} from "./post-layout/post-layout.component";
+import {EffectsModule, provideEffects} from "@ngrx/effects";
+import {PostsEffects} from "../state/posts/posts.effects";
+import {provideHttpClient} from "@angular/common/http";
 
 
 const routes: Routes = [
   {
     path: '',
     component: PostLayoutComponent,
+    providers: [
+    ],
     children: [
       {
         path: 'list',

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Post} from "../state/posts/posts.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,8 @@ export class PostsService {
   constructor(private http: HttpClient) {
   }
 
-
-
-//   export interface Post {
-//   userId: number;
-//   id: number;
-//   title: string;
-//   body: string;
-// }
-
-posts = (): Observable<any> => {
-    return this.http.get(this.baseUrl)
+  getAll = (): Observable<Post[]> => {
+    return this.http.get<Post[]>(this.baseUrl)
   }
 
 

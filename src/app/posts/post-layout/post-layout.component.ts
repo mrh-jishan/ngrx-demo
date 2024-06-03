@@ -5,7 +5,7 @@ import {RouterOutlet} from "@angular/router";
   selector: 'app-post-layout',
   standalone: true,
     imports: [
-        RouterOutlet
+        RouterOutlet,
     ],
   templateUrl: './post-layout.component.html',
   styleUrl: './post-layout.component.css'
