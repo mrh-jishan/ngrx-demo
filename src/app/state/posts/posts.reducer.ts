@@ -16,22 +16,15 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(PostsActions.loadPosts, (state) => {
-    console.log('state--- : ', state)
-    return {
-      ...state,
-      loading: true,
-    };
-  }),
-  on(PostsActions.loadPostsSuccess, (state, data) => {
-    console.log('posts--- : ', data)
-    return {
-      ...state,
-      data,
-      loading: false,
-      // posts: [...posts]
-    };
-  }),
+  on(PostsActions.loadPosts, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(PostsActions.loadPostsSuccess, (state, {posts}) => ({
+    ...state,
+    posts,
+    loading: false,
+  })),
   on(PostsActions.removePost, (state, {postId}) => {
     // state.filter((id) => id !== bookId)
     return {

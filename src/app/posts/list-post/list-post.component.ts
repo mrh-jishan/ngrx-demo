@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import {Post} from "../../state/posts/posts.model";
 import {Store} from "@ngrx/store";
 import {PostsActions} from "../../state/posts/posts.actions";
+import {allPosts} from "../../state/posts/posts.selectors";
+import {AppState} from "../../state";
 
 @Component({
   selector: 'app-list-post',
@@ -18,10 +20,9 @@ import {PostsActions} from "../../state/posts/posts.actions";
 })
 export class ListPostComponent implements OnInit {
 
+  posts$: Observable<readonly Post[]> = this.store.select(allPosts);
 
-  posts$: Observable<Post[]> = this.store.select(state => state.posts);
-
-  constructor(private store: Store<{ posts: Post[] }>) {
+  constructor(private store: Store<AppState>) {
   }
 
   ngOnInit(): void {

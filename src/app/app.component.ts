@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
-import {StoreRootModule} from "@ngrx/store";
+import {StoreModule, StoreRootModule} from "@ngrx/store";
+import {appFeatureKey, reducer} from "./state";
 
 @Component({
   selector: 'app-root',

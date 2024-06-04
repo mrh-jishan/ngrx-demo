@@ -1,17 +1,20 @@
-import {createReducer, on} from '@ngrx/store';
+import {combineReducers, createReducer, on} from '@ngrx/store';
 import * as fromPost from './posts/posts.reducer';
 
 export const appFeatureKey = 'app';
 
-export interface State {
+export interface AppState {
   [fromPost.postsFeatureKey]: fromPost.State;
 }
 
-export const initialState: State = {
+export const appState: AppState = {
   [fromPost.postsFeatureKey]: fromPost.initialState
 };
 
-export const reducer = createReducer(
-  initialState,
+export const reducer = combineReducers(
+  {
+    ...appState,
+    [fromPost.postsFeatureKey]: fromPost.reducer
+  }
 );
 
