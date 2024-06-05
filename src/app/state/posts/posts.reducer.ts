@@ -7,11 +7,13 @@ export const postsFeatureKey = 'posts';
 export interface State {
   posts: ReadonlyArray<Post>;
   loading: boolean;
+  post: Post;
 }
 
 export const initialState: State = {
   posts: [],
   loading: false,
+  post: {body: '', title: ''}
 };
 
 export const reducer = createReducer(
@@ -25,21 +27,22 @@ export const reducer = createReducer(
     posts,
     loading: false,
   })),
-  on(PostsActions.removePost, (state, {postId}) => {
-    // state.filter((id) => id !== bookId)
-    return {
-      ...state,
-      loading: false,
-      // posts: [...state.posts]
-    };
-  }),
-  on(PostsActions.addPost, (state, {postId}) => {
-    // if (state.indexOf(bookId) > -1) return state;
-    return {
-      ...state,
-      loading: false,
-      // posts: [...state.posts]
-    };
-  })
+  on(PostsActions.removePost, (state, {postId}) => ({
+    ...state,
+    loading: false,
+  })),
+  on(PostsActions.initAddPost, (state, {post}) => ({
+    ...state,
+    loading: true,
+    post
+  })),
+  on(PostsActions.addPostSuccess, (state, {post}) => ({
+    ...state,
+    loading: false,
+    post: {
+      ...state.post,
+      ...post
+    }
+  }))
 );
 

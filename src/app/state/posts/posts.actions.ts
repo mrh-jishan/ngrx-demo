@@ -7,7 +7,8 @@ export const PostsActions = createActionGroup({
     loadPosts: emptyProps(),
     loadPostsSuccess: props<{ posts: ReadonlyArray<Post> }>(),
     loadPostsFailed: props<{ error: unknown }>(),
-    addPost: props<{ postId: number }>(),
+    initAddPost: props<{ post: Post}>(),
+    addPostSuccess: props<{ post: Post }>(),
     removePost: props<{ postId: number }>(),
   }
 });
