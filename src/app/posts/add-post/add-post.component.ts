@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {Store} from "@ngrx/store";
 import {AppState} from "../../state";
 import {PostsActions} from "../../state/posts/posts.actions";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-post',
@@ -26,9 +27,9 @@ import {PostsActions} from "../../state/posts/posts.actions";
 })
 export class AddPostComponent {
 
-
   constructor(private _fb: FormBuilder,
-              private store: Store<AppState>) {
+              private store: Store<AppState>,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -42,5 +43,7 @@ export class AddPostComponent {
 
   submitPost($event: MouseEvent) {
     this.store.dispatch(PostsActions.initAddPost({post: this.form.value}));
+    this.form.reset();
+    this.router.navigateByUrl('/posts').then(console.debug)
   }
 }
