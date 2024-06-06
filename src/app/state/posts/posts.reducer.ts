@@ -7,13 +7,13 @@ export const postsFeatureKey = 'posts';
 export interface State {
   posts: ReadonlyArray<Post>;
   loading: boolean;
-  post: Post;
+  post?: Post;
+  postId?: number;
 }
 
 export const initialState: State = {
   posts: [],
   loading: false,
-  post: {body: '', title: ''}
 };
 
 export const reducer = createReducer(
@@ -37,15 +37,23 @@ export const reducer = createReducer(
     post
   })),
   on(PostsActions.addPostSuccess, (state, {post}) => {
-    const newPost = {
-      ...state.post,
-      ...post
-    }
     return ({
       ...state,
       loading: false,
-      post: newPost,
-      posts: [newPost, ...state.posts]
+      post,
+    });
+  }),
+  on(PostsActions.loadPost, (state, {postId}) => ({
+    ...state,
+    loading: true,
+    post: undefined,
+    postId
+  })),
+  on(PostsActions.loadPostSuccess, (state, {post}) => {
+    return ({
+      ...state,
+      loading: false,
+      post,
     });
   })
 );

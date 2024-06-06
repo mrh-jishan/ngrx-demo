@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {map, Observable} from "rxjs";
@@ -20,6 +20,7 @@ import {
   MatTableDataSource
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {MatAnchor} from "@angular/material/button";
 
 @Component({
   selector: 'app-list-post',
@@ -47,14 +48,15 @@ import {MatPaginator} from "@angular/material/paginator";
     MatCellDef,
     MatHeaderRowDef,
     MatRowDef,
+    MatAnchor,
   ],
   templateUrl: './list-post.component.html',
   styleUrl: './list-post.component.css'
 })
-export class ListPostComponent implements OnInit, AfterViewInit {
+export class ListPostComponent implements OnInit {
 
   posts$: Observable<readonly Post[]> = this.store.select(allPosts);
-  displayedColumns: string[] = ['id', 'title', 'body'];
+  displayedColumns: string[] = ['id', 'title', 'body', 'createdAt', 'action'];
   dataSource = new MatTableDataSource<Post>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -64,14 +66,16 @@ export class ListPostComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(PostsActions.loadPosts());
-  }
 
-  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.posts$.pipe(map(post => {
       this.dataSource.data = [...post];
     })).subscribe();
+
+    this.store.dispatch(PostsActions.loadPosts());
   }
 
+  deletePost(postId: number) {
+    this.store.dispatch(PostsActions.removePost({postId}));
+  }
 }

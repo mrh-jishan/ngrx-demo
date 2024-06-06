@@ -12,3 +12,7 @@ export const allPosts = createSelector(
   posts, (state) => state.posts
 );
 
+export const selectPost = createSelector(
+  posts, (state) => state.post
+);
+

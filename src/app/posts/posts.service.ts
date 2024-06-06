@@ -8,7 +8,7 @@ import {Post} from "../state/posts/posts.model";
 })
 export class PostsService {
 
-  baseUrl = 'https://jsonplaceholder.typicode.com/posts'
+  baseUrl = 'http://localhost:3000/posts'
 
   constructor(private http: HttpClient) {
   }
@@ -19,6 +19,18 @@ export class PostsService {
 
   createPost = (post: Post): Observable<Post> => {
     return this.http.post<Post>(this.baseUrl, post)
+  }
+
+  getPost = (postId: number): Observable<Post> => {
+    return this.http.get<Post>(`${this.baseUrl}/${postId}`)
+  }
+
+  editPost = (postId: number, post: Post): Observable<Post> => {
+    return this.http.patch<Post>(`${this.baseUrl}/${postId}`, post)
+  }
+
+  deletePost = (postId: number): Observable<Post> => {
+    return this.http.delete<Post>(`${this.baseUrl}/${postId}`)
   }
 
 
