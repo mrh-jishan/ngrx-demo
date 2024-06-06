@@ -1,20 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {EditPostComponent} from "./edit-post/edit-post.component";
 import {AddPostComponent} from "./add-post/add-post.component";
 import {ListPostComponent} from "./list-post/list-post.component";
 import {PostLayoutComponent} from "./post-layout/post-layout.component";
-import {EffectsModule, provideEffects} from "@ngrx/effects";
-import {PostsEffects} from "../state/posts/posts.effects";
-import {provideHttpClient} from "@angular/common/http";
-
 
 const routes: Routes = [
   {
     path: '',
     component: PostLayoutComponent,
-    providers: [
-    ],
+    providers: [],
     children: [
       {
         path: 'list',
@@ -23,10 +17,6 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddPostComponent
-      },
-      {
-        path: 'edit/:id',
-        component: EditPostComponent
       },
       {
         path: '',

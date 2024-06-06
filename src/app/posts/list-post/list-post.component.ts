@@ -7,13 +7,26 @@ import {Store} from "@ngrx/store";
 import {PostsActions} from "../../state/posts/posts.actions";
 import {allPosts} from "../../state/posts/posts.selectors";
 import {AppState} from "../../state";
+import {MatList, MatListItem, MatListSubheaderCssMatStyler} from "@angular/material/list";
+import {MatIcon} from "@angular/material/icon";
+import {MatDivider} from "@angular/material/divider";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-list-post',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    MatList,
+    MatListItem,
+    MatIcon,
+    MatListSubheaderCssMatStyler,
+    MatDivider,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
   ],
   templateUrl: './list-post.component.html',
   styleUrl: './list-post.component.css'

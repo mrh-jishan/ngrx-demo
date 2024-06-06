@@ -36,13 +36,17 @@ export const reducer = createReducer(
     loading: true,
     post
   })),
-  on(PostsActions.addPostSuccess, (state, {post}) => ({
-    ...state,
-    loading: false,
-    post: {
+  on(PostsActions.addPostSuccess, (state, {post}) => {
+    const newPost = {
       ...state.post,
       ...post
     }
-  }))
+    return ({
+      ...state,
+      loading: false,
+      post: newPost,
+      posts: [newPost, ...state.posts]
+    });
+  })
 );
 

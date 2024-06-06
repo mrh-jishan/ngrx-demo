@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {StoreModule, StoreRootModule} from "@ngrx/store";
 import {appFeatureKey, reducer} from "./state";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatAnchor} from "@angular/material/button";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,9 @@ import {appFeatureKey, reducer} from "./state";
     RouterOutlet,
     HttpClientModule,
     RouterLink,
+    MatToolbar,
+    MatAnchor,
+    RouterLinkActive,
   ],
   templateUrl: './app.component.html',
   providers: [],
