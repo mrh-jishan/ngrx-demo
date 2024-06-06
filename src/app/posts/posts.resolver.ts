@@ -1,7 +1,7 @@
 import {ResolveFn} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {AppState} from "../state";
-import {filter, finalize, first, map, switchMap, tap} from "rxjs";
+import {filter, finalize, first} from "rxjs";
 import {PostsActions} from "../state/posts/posts.actions";
 import {selectPost} from "../state/posts/posts.selectors";
 import {inject} from "@angular/core";
